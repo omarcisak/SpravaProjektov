@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="GetUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUsersResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetProjects">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProjectsResult" type="tns:ArrayOfProject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Project">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="abbreviation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="customer" type="s:string" />
+        </s:sequence>
+        <s:attribute name="id" type="s:string" />
+      </s:complexType>
+      <s:element name="SaveProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveProjectResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="DeleteProject">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project" type="tns:Project" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteProjectResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUsers" />
+  </wsdl:message>
+  <wsdl:message name="GetUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="GetProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveProject" />
+  </wsdl:message>
+  <wsdl:message name="SaveProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteProject" />
+  </wsdl:message>
+  <wsdl:message name="DeleteProjectSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteProjectResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SPF_WSSoap">
+    <wsdl:operation name="GetUsers">
+      <wsdl:input message="tns:GetUsersSoapIn" />
+      <wsdl:output message="tns:GetUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <wsdl:input message="tns:GetProjectsSoapIn" />
+      <wsdl:output message="tns:GetProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveProject">
+      <wsdl:input message="tns:SaveProjectSoapIn" />
+      <wsdl:output message="tns:SaveProjectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <wsdl:input message="tns:DeleteProjectSoapIn" />
+      <wsdl:output message="tns:DeleteProjectSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SPF_WSSoap" type="tns:SPF_WSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUsers">
+      <soap:operation soapAction="http://tempuri.org/GetUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap:operation soapAction="http://tempuri.org/GetProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProject">
+      <soap:operation soapAction="http://tempuri.org/SaveProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap:operation soapAction="http://tempuri.org/DeleteProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SPF_WSSoap12" type="tns:SPF_WSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUsers">
+      <soap12:operation soapAction="http://tempuri.org/GetUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProjects">
+      <soap12:operation soapAction="http://tempuri.org/GetProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProject">
+      <soap12:operation soapAction="http://tempuri.org/SaveProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteProject">
+      <soap12:operation soapAction="http://tempuri.org/DeleteProject" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SPF_WS">
+    <wsdl:port name="SPF_WSSoap" binding="tns:SPF_WSSoap">
+      <soap:address location="http://localhost:53141/SPF_WS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SPF_WSSoap12" binding="tns:SPF_WSSoap12">
+      <soap12:address location="http://localhost:53141/SPF_WS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<users>
+  <user id="u1">
+    <name>Ondrej</name>
+    <email>omarcisak@gmail.com</email>
+    <password>0E-AF-41-C4-B5-1A-3F-A7-BE-08-46-D5-AC-6A-08-A4-18-F0-61-2D</password>
+  </user>
+  <user id="u2">
+    <name>Fero</name>
+    <email>fero@gmail.com</email>
+    <password>B5-09-C0-BB-BF-50-BD-68-69-C7-A5-75-A8-54-6C-3A-A5-DF-35-9C</password>
+  </user>
+</users>

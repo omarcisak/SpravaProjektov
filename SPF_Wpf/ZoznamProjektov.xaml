@@ -1,0 +1,60 @@
+﻿<Page x:Class="SPF_Wpf.ZoznamProjektov"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SPF_Wpf"
+        mc:Ignorable="d"
+        Title="ZoznamProjektov" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+
+        <Canvas Grid.Row="0">
+            <TextBox Canvas.Left="62" Canvas.Top="12" Height="23" 
+                     Name="textBox1" Width="195" 
+                     TextChanged="textBox1_TextChanged"/>
+            <TextBox Canvas.Left="262" Canvas.Top="12" Height="23" 
+                     Name="textBox2" Width="115" 
+                     TextChanged="textBox2_TextChanged"/>
+            <TextBox Canvas.Left="382" Canvas.Top="12" Height="23" 
+                     Name="textBox3" Width="120" 
+                     TextChanged="textBox3_TextChanged" />
+
+            <ListView Canvas.Left="12" Canvas.Top="68" 
+                SelectionChanged="listView1_SelectionChanged" 
+                SelectionMode="Single"
+                HorizontalAlignment="Left"
+                Height="auto" Margin="0,10,0,0" VerticalAlignment="Top" Width="497"
+                Name="LVProjects">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID"
+                                    DisplayMemberBinding="{Binding id}"
+                                    Width="50"/>
+                        <GridViewColumn Header="Name"
+                                    DisplayMemberBinding="{Binding name}"
+                                    Width="200"/>
+                        <GridViewColumn Header="Abbreviation"
+                                    DisplayMemberBinding="{Binding abbreviation}"
+                                    Width="120"/>
+                        <GridViewColumn Header="Customer"
+                                    DisplayMemberBinding="{Binding customer}"
+                                    Width="120"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <Button Name="addButton" Canvas.Left="510" Canvas.Top="80" Height="21" Width="50" Click="addButton_Click" IsDefault="True">Add</Button>
+            <Button Name="removeButton" Canvas.Left="510" Canvas.Top="44" Height="21" Width="74" Click="removeButton_Click">Delete</Button>
+            <!--<Button Name="okButton" Canvas.Left="400" Canvas.Top="13" Content="OK" Height="22" Width="74" Click="okButton_Click" />
+            <Button Name="closeButton" Canvas.Left="400" Canvas.Top="44" Content="Close" Height="22" Width="74" Click="closeButton_Click" />-->
+            <Button Name="saveButton" Canvas.Left="510" Canvas.Top="13" Content="Save" Height="22" Width="74" Click="saveButton_Click" />
+        </Canvas>
+
+    </Grid>
+</Page>
