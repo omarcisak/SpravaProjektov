@@ -29,8 +29,11 @@ namespace SPF_Wpf
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {            
+            //hack
             ZoznamProjektov page = new ZoznamProjektov();
+            Base.Statics.SIGNED_USER = new ProjectService.User() { name="Fero" };
             NavigationService.Navigate(page);
+            //-----
 
             if (textBoxEmail.Text.Length == 0)
             {
@@ -49,17 +52,21 @@ namespace SPF_Wpf
                 string password = passwordBox1.Password;
                 
                 //----HASH-----------------------------------------
-                var data = Encoding.ASCII.GetBytes(password);
+                byte[] data = Encoding.ASCII.GetBytes(password);
                 var sha1 = new SHA1CryptoServiceProvider();
                 var sha1data = sha1.ComputeHash(data);
                 var hashedPassword = BitConverter.ToString(sha1data);
                 //--------------------------------------------------
-                ProjectService.SPF_WSSoapClient soapClient = new ProjectService.SPF_WSSoapClient();
-                soapClient.Endpoint.Address = new System.ServiceModel.EndpointAddress(Properties.Settings.Default.CS_WS);
-                List<ProjectService.User> users = soapClient.GetUsers(email, hashedPassword).ToList();
+                ServiceAgent sa = new ServiceAgent();
+                List<ProjectService.User> users = sa.soapClient.GetUsers(email, hashedPassword).ToList();
+
+                //ProjectService.SPF_WSSoapClient soapClient = new ProjectService.SPF_WSSoapClient();
+                //soapClient.Endpoint.Address = new System.ServiceModel.EndpointAddress(Properties.Settings.Default.CS_WS);
+                //List<ProjectService.User> users = soapClient.GetUsers(email, hashedPassword).ToList();
                
                 if (users.Count()>0)
                 {
+                    Base.Statics.SIGNED_USER = users.First();
                    //ZoznamProjektov page = new ZoznamProjektov();
                     NavigationService.Navigate(page);
                     

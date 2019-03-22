@@ -12,8 +12,35 @@ namespace SPF_ClassLib
     [XmlRoot("logs")]
     public class Logs
     {
+        private string SignedUser;
+
         [XmlElement("log")]
         public List<Log> LogList { get; set; }
+
+        public Logs()
+        {
+
+        }
+
+        public Logs(string UserName)
+        {
+            this.SignedUser = UserName;
+        }
+
+        public Logs GetLogs()
+        {
+            Logs result = Helpers.ReadFromXmlFile<Logs>(Properties.Settings.Default.LogXML_path);
+            return result;
+        }
+
+        public void WriteLog(Log log)
+        {
+            Logs existsLogs = GetLogs();
+            log.CrtDate = DateTime.Now;
+            log.Username = this.SignedUser;
+            existsLogs.LogList.Add(log);
+            Helpers.WriteToXmlFile<Logs>(Properties.Settings.Default.LogXML_path, existsLogs);
+        }
     }
 
     public class Log

@@ -26,9 +26,8 @@ namespace SPF_Wpf
         {
             InitializeComponent();
 
-            ProjectService.SPF_WSSoapClient soapClient = new ProjectService.SPF_WSSoapClient();
-            soapClient.Endpoint.Address = new System.ServiceModel.EndpointAddress(Properties.Settings.Default.CS_WS);
-            Projects = soapClient.GetProjects().ToList();
+            ServiceAgent sa = new ServiceAgent();
+            Projects = sa.soapClient.GetProjects().ToList();
 
             ShowData();
             if (LVProjects.Items.Count == 0)

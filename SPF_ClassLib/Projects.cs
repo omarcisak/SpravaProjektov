@@ -12,9 +12,6 @@ namespace SPF_ClassLib
     {
         public List<Project> GetProjects()
         {
-            //string path = string.Empty;
-            //path = Directory.GetCurrentDirectory() + Properties.Settings.Default.ProjectsXML_path;// @"\CustOrders.xml";
-            //Projects result = Helpers.DeserializeXMLFileToObject<Projects>(Properties.Settings.Default.ProjectsXML_path);// ("c:\\users\\ondrej\\source\\repos\\SpravaProjektov\\SPF_ClassLib\\ZoznamProjektov.xml");
             Projects result = Helpers.ReadFromXmlFile<Projects>(Properties.Settings.Default.ProjectsXML_path);
             return result.ProjectList;
         }
@@ -28,7 +25,7 @@ namespace SPF_ClassLib
 
             existsProjects.Add(project);
 
-            Projects projects = new Projects() { ProjectList = existsProjects.OrderBy(a=>a.Id).ToList() };
+            Projects projects = new Projects() { ProjectList = existsProjects.OrderBy(a => a.Id).ToList() };
             Helpers.WriteToXmlFile<Projects>(Properties.Settings.Default.ProjectsXML_path, projects);
 
         }
@@ -42,8 +39,8 @@ namespace SPF_ClassLib
 
             Projects projects = new Projects() { ProjectList = existsProjects };
             Helpers.WriteToXmlFile<Projects>(Properties.Settings.Default.ProjectsXML_path, projects);
-
         }
+
     }
 
     [XmlRoot("projects")]

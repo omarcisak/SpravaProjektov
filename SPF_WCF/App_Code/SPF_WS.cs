@@ -14,13 +14,19 @@ using SPF_ClassLib;
 // [System.Web.Script.Services.ScriptService]
 public class SPF_WS : System.Web.Services.WebService
 {
+    
+    private Logs LogFunc;
 
     public SPF_WS()
     {
-
-        //Uncomment the following line if using designed components 
+        LogFunc = new Logs();
         //InitializeComponent(); 
     }
+
+    public SPF_WS(string SignedUser)
+    {
+        LogFunc = new Logs(SignedUser);
+    } 
 
     [WebMethod]
     public List<User> GetUsers(string email, string password)
@@ -43,7 +49,7 @@ public class SPF_WS : System.Web.Services.WebService
     {
         Proj projF = new Proj();
         projF.WriteProject(project);
-        Log.WriteLog(new Log("Save project" + project.Name));
+        LogFunc.WriteLog(new Log("Save project " + project.Name));
     }
 
     [WebMethod]
