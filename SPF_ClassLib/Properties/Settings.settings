@@ -3,13 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="UsersXML_path" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">c:\users\ondrej\source\repos\SpravaProjektov\SPF_ClassLib\Users.xml</Value>
+      <Value Profile="(Default)">SpravaProjektov\SPF_ClassLib\Users.xml</Value>
     </Setting>
     <Setting Name="ProjectsXML_path" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">c:\users\ondrej\source\repos\SpravaProjektov\SPF_ClassLib\ZoznamProjektov.xml</Value>
+      <Value Profile="(Default)">SpravaProjektov\SPF_ClassLib\ZoznamProjektov.xml</Value>
     </Setting>
     <Setting Name="LogXML_path" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">c:\users\ondrej\source\repos\SpravaProjektov\SPF_ClassLib\Log.xml</Value>
+      <Value Profile="(Default)">SpravaProjektov\SPF_ClassLib\Log.xml</Value>
     </Setting>
   </Settings>
 </SettingsFile>

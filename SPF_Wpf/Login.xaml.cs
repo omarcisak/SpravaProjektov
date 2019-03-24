@@ -29,11 +29,11 @@ namespace SPF_Wpf
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {            
-            //hack
-            ZoznamProjektov page = new ZoznamProjektov();
-            Base.Statics.SIGNED_USER = new ProjectService.User() { name="Fero" };
-            NavigationService.Navigate(page);
-            //-----
+            ////hack pre rychlejsi debug
+            //ZoznamProjektov page = new ZoznamProjektov();
+            //Base.Statics.SIGNED_USER = new ProjectService.User() { name="Fero" };
+            //NavigationService.Navigate(page);
+            ////-----
 
             if (textBoxEmail.Text.Length == 0)
             {
@@ -67,7 +67,7 @@ namespace SPF_Wpf
                 if (users.Count()>0)
                 {
                     Base.Statics.SIGNED_USER = users.First();
-                   //ZoznamProjektov page = new ZoznamProjektov();
+                    ZoznamProjektov page = new ZoznamProjektov();
                     NavigationService.Navigate(page);
                     
                 }

@@ -20,4 +20,8 @@
     <datetime>2019-03-24T19:53:24.9301892+01:00</datetime>
     <action>Save project newproject1</action>
   </log>
+  <log>
+    <datetime>2019-03-24T22:50:20.0775822+01:00</datetime>
+    <action>Save project project1</action>
+  </log>
 </logs>

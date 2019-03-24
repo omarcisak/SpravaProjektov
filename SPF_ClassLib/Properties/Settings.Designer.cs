@@ -25,7 +25,7 @@ namespace SPF_ClassLib.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\users\\ondrej\\source\\repos\\SpravaProjektov\\SPF_ClassLib\\Users.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SpravaProjektov\\SPF_ClassLib\\Users.xml")]
         public string UsersXML_path {
             get {
                 return ((string)(this["UsersXML_path"]));
@@ -34,7 +34,7 @@ namespace SPF_ClassLib.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\users\\ondrej\\source\\repos\\SpravaProjektov\\SPF_ClassLib\\ZoznamProjektov.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SpravaProjektov\\SPF_ClassLib\\ZoznamProjektov.xml")]
         public string ProjectsXML_path {
             get {
                 return ((string)(this["ProjectsXML_path"]));
@@ -43,7 +43,7 @@ namespace SPF_ClassLib.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\users\\ondrej\\source\\repos\\SpravaProjektov\\SPF_ClassLib\\Log.xml")]
+        [global::System.Configuration.DefaultSettingValueAttribute("SpravaProjektov\\SPF_ClassLib\\Log.xml")]
         public string LogXML_path {
             get {
                 return ((string)(this["LogXML_path"]));

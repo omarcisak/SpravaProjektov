@@ -14,7 +14,9 @@ namespace SPF_ClassLib
 
         public Users GetUsers()
         {
-            Users result = Helpers.ReadFromXmlFile<Users>(Properties.Settings.Default.UsersXML_path);// ("c:\\users\\ondrej\\source\\repos\\SpravaProjektov\\SPF_ClassLib\\Users.xml");
+            string XMLPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.Replace("\\SpravaProjektov\\SPF_WCF", ""), Properties.Settings.Default.UsersXML_path);
+
+            Users result = Helpers.ReadFromXmlFile<Users>(XMLPath);
             return result;
         }
 

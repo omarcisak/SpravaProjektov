@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ namespace SPF_ClassLib
     public class Logs
     {
         private string SignedUser;
+        private string XMLPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory.Replace("\\SpravaProjektov\\SPF_WCF", ""), Properties.Settings.Default.LogXML_path);
+
 
         [XmlElement("log")]
         public List<Log> LogList { get; set; }
@@ -29,7 +32,7 @@ namespace SPF_ClassLib
 
         public Logs GetLogs()
         {
-            Logs result = Helpers.ReadFromXmlFile<Logs>(Properties.Settings.Default.LogXML_path);
+            Logs result = Helpers.ReadFromXmlFile<Logs>(XMLPath);
             return result;
         }
 
@@ -39,7 +42,7 @@ namespace SPF_ClassLib
             log.CrtDate = DateTime.Now;
             log.Username = this.SignedUser;
             existsLogs.LogList.Add(log);
-            Helpers.WriteToXmlFile<Logs>(Properties.Settings.Default.LogXML_path, existsLogs);
+            Helpers.WriteToXmlFile<Logs>(XMLPath, existsLogs);
         }
     }
 

@@ -5,18 +5,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
+using System.Net.Http;
 
 namespace SPF_ClassLib
 {
     public class Proj
     {
+        private string XMLPath= Path.Combine(AppDomain.CurrentDomain.BaseDirectory.Replace("\\SpravaProjektov\\SPF_WCF", ""), Properties.Settings.Default.ProjectsXML_path);
+
         /// <summary>
         /// Nacitanie vsetkych existujucich projektov
         /// </summary>
         /// <returns></returns>
         public List<Project> GetProjects()
-        {
-            Projects result = Helpers.ReadFromXmlFile<Projects>(Properties.Settings.Default.ProjectsXML_path);
+        {            
+            Projects result = Helpers.ReadFromXmlFile<Projects>(XMLPath);
             return result.ProjectList;
         }
 
@@ -34,7 +38,7 @@ namespace SPF_ClassLib
             existsProjects.Add(project);
 
             Projects projects = new Projects() { ProjectList = existsProjects.OrderBy(a => a.Id).ToList() };
-            Helpers.WriteToXmlFile<Projects>(Properties.Settings.Default.ProjectsXML_path, projects);
+            Helpers.WriteToXmlFile<Projects>(XMLPath, projects);
 
         }
 
@@ -50,7 +54,7 @@ namespace SPF_ClassLib
                 existsProjects.Remove(existsProject);
 
             Projects projects = new Projects() { ProjectList = existsProjects };
-            Helpers.WriteToXmlFile<Projects>(Properties.Settings.Default.ProjectsXML_path, projects);
+            Helpers.WriteToXmlFile<Projects>(XMLPath, projects);
         }
 
     }
