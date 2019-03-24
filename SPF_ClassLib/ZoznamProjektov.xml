@@ -25,9 +25,4 @@
     <abbreviation>CK-Delvita</abbreviation>
     <customer>Delvita, a. s.</customer>
   </project>
-  <project id="prj6">
-    <name>newproject1</name>
-    <abbreviation>MMM</abbreviation>
-    <customer>KKK12</customer>
-  </project>
 </projects>
