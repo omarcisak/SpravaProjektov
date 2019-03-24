@@ -17,7 +17,7 @@ namespace SPF_ClassLib
             try
             {
                 var serializer = new XmlSerializer(typeof(T));
-                reader = new StreamReader(filePath);
+                reader = new StreamReader(filePath, Encoding.Default);
                 return (T)serializer.Deserialize(reader);
             }
             finally
@@ -33,7 +33,7 @@ namespace SPF_ClassLib
             try
             {
                 var serializer = new XmlSerializer(typeof(T));
-                writer = new StreamWriter(filePath, append);
+                writer = new StreamWriter(filePath, append, Encoding.Default);
                 serializer.Serialize(writer, objectToWrite);
             }
             finally

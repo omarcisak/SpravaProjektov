@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="windows-1250"?>
 <logs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <log>
     <datetime>2019-03-18T22:54:12.2263472+01:00</datetime>
@@ -11,5 +11,13 @@
   <log>
     <datetime>2019-03-18T22:55:09.5951901+01:00</datetime>
     <action>Save project xczcxz111</action>
+  </log>
+  <log>
+    <datetime>2019-03-24T19:49:48.9156658+01:00</datetime>
+    <action>Save project newproject1</action>
+  </log>
+  <log>
+    <datetime>2019-03-24T19:53:24.9301892+01:00</datetime>
+    <action>Save project newproject1</action>
   </log>
 </logs>

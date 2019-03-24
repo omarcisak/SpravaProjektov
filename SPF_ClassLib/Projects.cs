@@ -10,12 +10,20 @@ namespace SPF_ClassLib
 {
     public class Proj
     {
+        /// <summary>
+        /// Nacitanie vsetkych existujucich projektov
+        /// </summary>
+        /// <returns></returns>
         public List<Project> GetProjects()
         {
             Projects result = Helpers.ReadFromXmlFile<Projects>(Properties.Settings.Default.ProjectsXML_path);
             return result.ProjectList;
         }
 
+        /// <summary>
+        /// Editacia a pridanie noveho projektu
+        /// </summary>
+        /// <param name="project"></param>
         public void WriteProject(Project project)
         {
             List<Project> existsProjects = GetProjects();
@@ -30,6 +38,10 @@ namespace SPF_ClassLib
 
         }
 
+        /// <summary>
+        /// Zmazanie projektu
+        /// </summary>
+        /// <param name="project"></param>
         public void DeleteProject(Project project)
         {
             List<Project> existsProjects = GetProjects();
